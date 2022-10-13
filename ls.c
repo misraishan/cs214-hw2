@@ -55,6 +55,7 @@ int main(int argc, char *argv[]) {
             permissions[10] = '\0';
             char *group = getgrgid(buf.st_gid)->gr_name;
             char *user = getpwuid(buf.st_uid)->pw_name;
+            // buf.st_size only works with ld on ilab, but only lld on my computer
             sprintf(files[filesLength], "%s\t%s\t%s\t%lld\t%s\t%s", permissions, user, group, buf.st_size, time, dirp->d_name);
             free(permissions);
             filesNames[filesLength] = malloc(1012 * sizeof(char));
@@ -79,6 +80,10 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
+
+        for (int i = 0; i < filesLength; i++) {
+            free(filesNames[i]);
+        }
     } else {
         for (int i = 0; i < filesLength; i++) {
             for (int j = i + 1; j < filesLength; j++) {
@@ -96,7 +101,8 @@ int main(int argc, char *argv[]) {
         free(files[i]);
     }
     free(files);
-
+    free(dirp);
+    free(filesNames);
     closedir(dir);
     return 0;
 }
