@@ -40,8 +40,8 @@ int main(int argc, char *argv[]) {
 
     // Untl we reach the end of the directory, read
     while ((dirp = readdir(dir)) != NULL) {
-        // If the directory lists ".." or ".", skip
-        if (!strcmp(dirp->d_name, "..") || !strcasecmp(dirp->d_name, ".")) continue;
+        // Ignore files that start with . (hidden files)
+        if (dirp->d_name[0] == '.') continue;
 
         // Allocate 1012 bytes for full file length (random num to account for -l)
         // File names will be 256 bytes at most anyways
@@ -81,7 +81,7 @@ int main(int argc, char *argv[]) {
 
             // buf.st_size only works with ld on ilab, but only lld on my computer
             // sprintf sends formatted string to specified buffer, so not printf (was getting confused earlier)
-            sprintf(files[filesLength], "%s\t%s\t%s\t%ld\t%s\t%s", permissions, user, group, buf.st_size, time, dirp->d_name);
+            sprintf(files[filesLength], "%s %s %s %ld\t%s %s", permissions, user, group, buf.st_size, time, dirp->d_name);
             free(permissions);
 
             // Remember to store fileNames as well for comparasion later on
