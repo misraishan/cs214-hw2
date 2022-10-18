@@ -46,15 +46,15 @@ void recurseDirectories(char *path, char *search) {
     closedir(dir);
 
     for (int i = 0; i < dirNamesLength; i++) {
-        char *newPath = malloc(sizeof(char) * 256);
+        char newPath[256];
         strcpy(newPath, path);
         strcat(newPath, "/");
         strcat(newPath, dirNames[i]);
         free(dirNames[i]);
         recurseDirectories(newPath, search);
     }
-
     free(dirNames);
+
 }
 
 int main(int argc, char *argv[]) {
