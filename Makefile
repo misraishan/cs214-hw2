@@ -1,4 +1,4 @@
-objects: ls
+objects: ls find
 all: $(OBJECTS)
 CFLAGS=-g -Wall -Werror -fsanitize=address
 
