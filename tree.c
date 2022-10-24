@@ -5,7 +5,6 @@
 
 int check(char **directoryNames, int directorylength, char *filename)
 {
-    int check = 0;
         for(int i = 0; i < directorylength; i++)
         {
             if(strcasecmp(directoryNames[i], filename) == 0)
