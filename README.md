@@ -1,4 +1,5 @@
 # CS214 - Homework #2
+Collaborator: [Alexander Balako](https://github.com/SpinThyLeek)
 ## Academic Integrity Warning
 This code is shared for educational purposes only. It must not be copied for assignments at Rutgers University or any other educational institution, even with attribution. Doing so is a violation of academic integrity policies. Ensure you are familiar with the Rutgers CS academic integrity guidelines to avoid academic dishonesty consequences, which can be found here.
 
